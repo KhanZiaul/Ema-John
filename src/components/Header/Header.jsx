@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/images/favicon.ico'
+import logo from '../../assets/images/favicon.ico'
 import './Header.css'
 const Header = () => {
     return (

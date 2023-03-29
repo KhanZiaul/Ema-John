@@ -1,12 +1,12 @@
-import Cards from "./components/cards/Fetch"
-import Header from "./components/Header"
+import Cards from "./components/FetchData/Fetch"
+import Header from "./components/Header/Header"
 
 function App() {
 
   return (
     <>
     <Header></Header>
-    <Cards> </Cards>
+    <Cards></Cards>
     </>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ShowCards from './ShowCards';
+import ShowCards from '../cards/ShowCards/ShowCards';
 import './Fetch.css'
+import Order from '../cards/order summary/Order';
 
 const Cards = () => {
     const [datas,setdatas] = useState([]);
@@ -29,9 +30,8 @@ const Cards = () => {
             </ShowCards>)
           }  
         </div>
-        <div className='text-center p-5 bg-orange-400 text-white rounded-lg'>
-          <h2 className='text-2xl font-semibold underline'>Order Summary</h2>
-          <p className='text-xl mt-8 text-left font-medium'>Selected items : {carts.length}</p>
+        <div>
+          <Order carts ={carts}></Order>
         </div>
       </div>
     );
