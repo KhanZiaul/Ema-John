@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ShowCards from '../cards/ShowCards/ShowCards';
 import './Fetch.css'
 import Order from '../cards/order summary/Order';
+import { addToDb } from '../utilities/fakedb';
 
 const Cards = () => {
     const [datas,setdatas] = useState([]);
@@ -16,6 +17,7 @@ const Cards = () => {
     function cartProduct(product){
       const newProducts = [...carts,product] ;
       setCarts(newProducts) ;
+      addToDb(product.id)
     }
 
     return (
