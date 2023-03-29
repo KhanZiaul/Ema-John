@@ -15,6 +15,7 @@ const Order = ({carts}) => {
         shipping = shipping + product.shipping ;
     }
 
+    let tax = (totalPrice*7) / 100 ;
 
     return (
         <div className='text-center p-5 bg-orange-400 text-white rounded-lg sticky top-0'>
@@ -27,7 +28,8 @@ const Order = ({carts}) => {
 
             <p className='text-xl mt-8 text-left font-medium'>Total Shipping Charge: ${shipping}</p>
 
-            <p className='text-xl mt-8 text-left font-medium'>Tax : ${carts.length}</p>
+            <p className='text-xl mt-8 text-left font-medium'>Tax : ${tax}</p>
+
             <p className='text-xl mt-8 text-left font-medium'>Grand Total: ${carts.length}</p>
         </div>
 
