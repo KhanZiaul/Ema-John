@@ -8,11 +8,15 @@ const Order = ({carts}) => {
 
     let shipping = 0;
 
+    let quantity = 0 ;
+
     for(const product of carts){
 
-        totalPrice = totalPrice + product.price ;
+        totalPrice = totalPrice + product.price * product.quantity;
 
-        shipping = shipping + product.shipping ;
+        shipping = shipping + product.shipping * product.quantity;
+
+        quantity = quantity + product.quantity ;
     }
 
     let tax = (totalPrice*7) / 100 ;
@@ -24,7 +28,7 @@ const Order = ({carts}) => {
             
             <h2 className='text-2xl font-semibold underline'>Order Summary</h2>
 
-            <p className='text-xl mt-8 text-left font-medium'>Selected items : {carts.length}</p>
+            <p className='text-xl mt-8 text-left font-medium'>Selected items : {quantity}</p>
 
             <p className='text-xl mt-8 text-left font-medium'>Total Price : {totalPrice}</p>
 
