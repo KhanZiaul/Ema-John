@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ShowCards from '../cards/ShowCards/ShowCards';
 import './Fetch.css'
 import Order from '../cards/order summary/Order';
-import { addToDb } from '../utilities/fakedb';
+import { addToDb, getShoppingCart } from '../utilities/fakedb';
 
 const Cards = () => {
     const [datas,setdatas] = useState([]);
@@ -13,6 +13,26 @@ const Cards = () => {
         .then(res => res.json())
         .then(data => setdatas(data))
     },[])
+
+    useEffect(()=>{
+      let savedCarts = [] ;
+     // console.log(datas)
+      let getCarts = getShoppingCart() ;
+      // console.log(getCarts)
+      for(let id in getCarts){
+        // console.log(cart)
+        let matchProduct = datas.find((product) => product.id === id) ;
+        // console.log(matchProduct)
+        if(matchProduct){
+          let newQuantity = getCarts[id];
+          matchProduct.quantity = newQuantity ;
+          savedCarts.push(matchProduct) ;
+        }
+      }
+      // console.log('saveCart', savedCarts)
+      setCarts(savedCarts);
+    },[datas]) 
+
 
     function cartProduct(product){
       const newProducts = [...carts,product] ;
