@@ -4,6 +4,8 @@ import './Fetch.css'
 
 const Cards = () => {
     const [datas,setdatas] = useState([]);
+    const [carts,setCarts] = useState([]);
+
     useEffect(()=>{
         fetch('products.json')
         .then(res => res.json())
@@ -11,8 +13,8 @@ const Cards = () => {
     },[])
 
     function cartProduct(product){
-
-      console.log(product)
+      const newProducts = [...carts,product] ;
+      setCarts(newProducts) ;
     }
 
     return (
@@ -28,8 +30,8 @@ const Cards = () => {
           }  
         </div>
         <div className='text-center p-5 bg-orange-400 text-white rounded-lg'>
-          <h2 className='text-2xl font-semibold'>Order Summary</h2>
-          <p className='mt-8 text-left font-medium'>Selected items : </p>
+          <h2 className='text-2xl font-semibold underline'>Order Summary</h2>
+          <p className='text-xl mt-8 text-left font-medium'>Selected items : {carts.length}</p>
         </div>
       </div>
     );
