@@ -35,7 +35,23 @@ const Cards = () => {
 
 
     function cartProduct(product){
-      const newProducts = [...carts,product] ;
+      // const newProducts = [...carts,product] ;
+
+      let newProducts = [] ;
+
+      const exists = carts.find(pd => pd.id === product.id) ;
+
+      if(!exists){
+        product.quantity = 1 ;
+        newProducts = [...carts , product] 
+      }
+      else{
+        exists.quantity = exists.quantity + 1;
+
+        const remaining = carts.filter(pd => exists.id !== pd.id) ;
+
+        newProducts = [...remaining , exists]
+      }
       setCarts(newProducts) ;
       addToDb(product.id)
     }
