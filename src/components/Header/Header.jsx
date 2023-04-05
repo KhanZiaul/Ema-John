@@ -10,10 +10,10 @@ const Header = () => {
             </Link>
 
             <div className='text-white flex gap-5'>
-                <a href="/order">Order</a>
-                <a href="/order_review">Order Review</a>
-                <a href="/Manage Inventory">Manage Inventory</a>
-                <a href="/Login">Login</a>
+                <Link to="/order">Order</Link>
+                <Link to="/order_review">Order Review</Link>
+                <Link to="/Manage Inventory">Manage Inventory</Link>
+                <Link to="/Login">Login</Link>
             </div>    
         </nav>
     );
