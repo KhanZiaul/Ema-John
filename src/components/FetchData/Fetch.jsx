@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ShowCards from '../cards/ShowCards/ShowCards';
+import ShowCards from '../ShowCards/ShowCards';
 import './Fetch.css'
-import Order from '../cards/order summary/Order';
+import Order from '../order summary/Order';
 import { addToDb, getShoppingCart } from '../utilities/fakedb';
 
 const Cards = () => {

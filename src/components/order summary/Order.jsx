@@ -2,7 +2,7 @@ import React from 'react';
 
 const Order = ({carts}) => {
 
-    console.log(carts)
+    // console.log(carts)
 
     let totalPrice = 0;
 

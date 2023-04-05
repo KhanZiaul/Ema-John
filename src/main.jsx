@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import Home from "./components/Home/Home";
 import OrderReview from "./components/OrderReview/OrderReview";
+import ManageInventory from './components/MnageInventory/ManageInventory';
+import Login from './components/Login/Login';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
       {
         path:'order_review',
         element:<OrderReview></OrderReview>
+      },
+      {
+        path:'manage_inventory',
+        element:<ManageInventory></ManageInventory>
+      },
+      {
+        path:'login',
+        element:<Login></Login>
       }
     ]
   }
