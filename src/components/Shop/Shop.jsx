@@ -57,7 +57,7 @@ const Shop = () => {
     }
 
     return (
-      <div className='showData m-5'>
+      <div className='showData m-5 flex flex-col-reverse md:flex-row'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           {
             datas.map((data) => <Cards 
