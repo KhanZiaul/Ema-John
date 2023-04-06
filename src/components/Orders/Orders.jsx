@@ -31,10 +31,12 @@ const Orders = () => {
                 }
             </div>
             <div>
-                <Cart 
-                carts={selectedProducts}
-                deleteAllItems={deleteAllItems}
-                ></Cart>
+                <Cart
+                    carts={selectedProducts}
+                    deleteAllItems={deleteAllItems}
+                >
+                    <button className='text-white bg-yellow-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-yellow-700'>Proceed Checkout</button>
+                </Cart>
             </div>
         </div>
     );

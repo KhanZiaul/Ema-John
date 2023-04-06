@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({carts , deleteAllItems}) => {
+const Cart = ({carts , deleteAllItems , children}) => {
 
     // console.log(carts)
 
@@ -39,6 +39,10 @@ const Cart = ({carts , deleteAllItems}) => {
             <p className='md:text-xl mt-8 text-left font-medium'>Grand Total: ${grandTotal.toFixed(2)}</p>
 
             <button onClick={()=> deleteAllItems()} className='text-white bg-red-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-red-800'>Clear Cart</button>
+
+            {
+                children
+            }
 
         </div>
 

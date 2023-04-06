@@ -3,6 +3,8 @@ import Cards from '../Cards/Cards';
 import './Shop.css'
 import Cart from '../Cart/Cart';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../utilities/fakedb';
+import { Link } from 'react-router-dom';
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 
 const Shop = () => {
   const [datas, setdatas] = useState([]);
@@ -67,7 +69,12 @@ const Shop = () => {
         <Cart
           carts={carts}
           deleteAllItems={deleteAllItems}
-        ></Cart>
+        >
+          <Link to='/orders' className='text-white flex justify-center items-center gap-4 bg-yellow-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-yellow-700'>
+            <button >Review Order</button>
+            <ArrowLongRightIcon className='w-8 h-8'></ArrowLongRightIcon>
+          </Link>
+        </Cart>
       </div>
     </div>
   );
