@@ -70,7 +70,7 @@ const Shop = () => {
           carts={carts}
           deleteAllItems={deleteAllItems}
         >
-          <Link to='/orders' className='text-white flex justify-center items-center gap-4 bg-yellow-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-yellow-700'>
+          <Link to='/orders' className='text-white flex justify-center items-center gap-4 bg-green-700 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-green-900'>
             <button >Review Order</button>
             <ArrowLongRightIcon className='w-8 h-8'></ArrowLongRightIcon>
           </Link>

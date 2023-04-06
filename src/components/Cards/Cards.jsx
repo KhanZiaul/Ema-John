@@ -13,7 +13,7 @@ const Cards = (props) => {
             <h3 className='font-medium'>Price : ${price}</h3>
             <p className='mt-6'>Manufacturer : {seller}</p>
             <p className='my-2'>Rating : {ratings} stars</p>
-            <div onClick={() => cartProduct(props.data)} className='cursor-pointer flex justify-center p-4 gap-4 bg-orange-500 absolute left-0 bottom-0 w-[100%] mt-4 text-white hover:bg-orange-900'>
+            <div onClick={() => cartProduct(props.data)} className='cursor-pointer flex justify-center p-4 gap-4 bg-slate-600 absolute left-0 bottom-0 w-[100%] mt-4 text-white hover:bg-slate-900'>
                 <h3>Add To Cart</h3>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

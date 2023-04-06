@@ -25,7 +25,7 @@ const Cart = ({carts , deleteAllItems , children}) => {
     let grandTotal = totalPrice + shipping + tax ;
 
     return (
-        <div className='text-center p-5 bg-orange-400 text-white rounded-lg sticky top-0'>
+        <div className='text-center p-5 bg-slate-600 text-white rounded-lg sticky top-0'>
             
             <h2 className='md:text-2xl font-semibold underline'>Order Summary</h2>
 

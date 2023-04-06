@@ -36,7 +36,7 @@ const Orders = () => {
                     carts={selectedProducts}
                     deleteAllItems={deleteAllItems}
                 >
-                    <Link to='/checkout' className='text-white flex justify-center items-center gap-4 bg-yellow-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-yellow-700'>
+                    <Link to='/checkout' className='text-white flex justify-center items-center gap-4 bg-green-700 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-green-900'>
                     <button >Procced Checkout</button>
                     <CreditCardIcon className='w-5 h-5'></CreditCardIcon>
                     </Link>
