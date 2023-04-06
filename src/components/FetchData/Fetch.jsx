@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ShowCards from '../ShowCards/ShowCards';
 import './Fetch.css'
-import Order from '../order summary/Order';
+import OrderSummary from '../OrderSummary/OrderSummary';
 import { addToDb, getShoppingCart } from '../utilities/fakedb';
 
 const Cards = () => {
@@ -69,7 +69,7 @@ const Cards = () => {
           }  
         </div>
         <div>
-          <Order carts ={carts}></Order>
+          <OrderSummary carts ={carts}></OrderSummary>
         </div>
       </div>
     );

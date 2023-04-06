@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     return (
         <nav className='flex justify-between items-center p-5 bg-slate-400'>
-            <Link to='/order'>
+            <Link to='/'>
             <img className='w-[60px]' src={logo} alt="" />
             </Link>
 
             <div className='text-white flex gap-5'>
+                <Link to="/">Shop</Link>
                 <Link to="/order">Order</Link>
-                <Link to="/order_review">Order Review</Link>
-                <Link to="/manage_inventory">Manage Inventory</Link>
+                <Link to="/inventory">Inventory</Link>
                 <Link to="/login">Login</Link>
             </div>    
         </nav>
