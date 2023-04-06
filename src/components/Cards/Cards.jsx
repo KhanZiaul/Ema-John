@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShowCards = (props) => {
+const Cards = (props) => {
 
     const { img, name, price, seller, ratings } = props.data;
 
@@ -26,4 +26,4 @@ const ShowCards = (props) => {
     );
 };
 
-export default ShowCards;
+export default Cards;

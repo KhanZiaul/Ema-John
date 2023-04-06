@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Order = ({carts}) => {
+const Cart = ({carts}) => {
 
     // console.log(carts)
 
@@ -43,4 +43,4 @@ const Order = ({carts}) => {
     );
 };
 
-export default Order;
+export default Cart;

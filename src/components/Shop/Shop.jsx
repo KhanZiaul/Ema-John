@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ShowCards from '../ShowCards/ShowCards';
-import './Fetch.css'
-import OrderSummary from '../OrderSummary/OrderSummary';
+import Cards from '../Cards/Cards';
+import './Shop.css'
+import Cart from '../Cart/Cart';
 import { addToDb, getShoppingCart } from '../utilities/fakedb';
 
-const Cards = () => {
+const Shop = () => {
     const [datas,setdatas] = useState([]);
     const [carts,setCarts] = useState([]);
 
@@ -60,19 +60,19 @@ const Cards = () => {
       <div className='showData m-5'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
           {
-            datas.map((data) => <ShowCards 
+            datas.map((data) => <Cards 
             key={data.id}
             data={data}
             cartProduct={cartProduct}
             >
-            </ShowCards>)
+            </Cards>)
           }  
         </div>
         <div>
-          <OrderSummary carts ={carts}></OrderSummary>
+          <Cart carts ={carts}></Cart>
         </div>
       </div>
     );
 };
 
-export default Cards;
+export default Shop;
