@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Cart from '../Cart/Cart';
 import { useLoaderData } from 'react-router-dom';
 import ReviewItems from '../ReviewItems/ReviewItems';
+import { removeFromDb } from '../utilities/fakedb';
 
 const Orders = () => {
     const products = useLoaderData()
-    console.log(products)
+    const [selectedProducts, setSelectedProducts] = useState(products)
 
-    function deleteItem(id){
-        console.log(id)
+    function deleteItem(id) {
+        const newProduct = selectedProducts.filter(product => product.id !== id)
+        setSelectedProducts(newProduct)
+        removeFromDb(id)
     }
 
     return (
         <div className='grid grid-cols-1 gap-20 md:grid-cols-2 md:px-16 my-12'>
             <div>
                 {
-                    products.map(product => <ReviewItems
+                    selectedProducts.map(product => <ReviewItems
                         key={product.id}
                         product={product}
                         deleteItem={deleteItem}
@@ -24,7 +27,7 @@ const Orders = () => {
                 }
             </div>
             <div>
-                <Cart carts={products}></Cart>
+                <Cart carts={selectedProducts}></Cart>
             </div>
         </div>
     );
