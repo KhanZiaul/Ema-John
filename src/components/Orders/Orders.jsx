@@ -6,6 +6,11 @@ import ReviewItems from '../ReviewItems/ReviewItems';
 const Orders = () => {
     const products = useLoaderData()
     console.log(products)
+
+    function deleteItem(id){
+        console.log(id)
+    }
+
     return (
         <div className='grid grid-cols-1 gap-20 md:grid-cols-2 md:px-16 my-12'>
             <div>
@@ -13,6 +18,7 @@ const Orders = () => {
                     products.map(product => <ReviewItems
                         key={product.id}
                         product={product}
+                        deleteItem={deleteItem}
                     >
                     </ReviewItems>)
                 }

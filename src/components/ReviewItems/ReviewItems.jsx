@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrashIcon } from '@heroicons/react/24/solid'
 
-const ReviewItems = ({product}) => {
+const ReviewItems = ({product,deleteItem}) => {
     return (
         <>
             <div className='md:w-[571px] md:h-[107px] border-2 border-gray-300 rounded-lg mb-5'>
@@ -18,7 +18,7 @@ const ReviewItems = ({product}) => {
                     </div>
 
                     <div className='md:bg-red-200 p-3 rounded-full cursor-pointer hover:bg-red-300 flex justify-center items-center'>
-                        <TrashIcon className="h-6 w-6 text-red-500 " />
+                        <TrashIcon onClick={() => deleteItem(product.id)} className="h-6 w-6 text-red-500 " />
                     </div>
                 </div>
             </div>
