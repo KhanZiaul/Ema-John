@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Cart from '../Cart/Cart';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReviewItems from '../ReviewItems/ReviewItems';
 import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
+import { CreditCardIcon } from '@heroicons/react/24/solid'
 
 const Orders = () => {
     const products = useLoaderData()
@@ -35,7 +36,10 @@ const Orders = () => {
                     carts={selectedProducts}
                     deleteAllItems={deleteAllItems}
                 >
-                    <button className='text-white bg-yellow-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-yellow-700'>Proceed Checkout</button>
+                    <Link to='/checkout' className='text-white flex justify-center items-center gap-4 bg-yellow-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-yellow-700'>
+                    <button >Procced Checkout</button>
+                    <CreditCardIcon className='w-5 h-5'></CreditCardIcon>
+                    </Link>
                 </Cart>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { TrashIcon } from '@heroicons/react/24/solid'
 
 const Cart = ({carts , deleteAllItems , children}) => {
 
@@ -38,11 +39,17 @@ const Cart = ({carts , deleteAllItems , children}) => {
 
             <p className='md:text-xl mt-8 text-left font-medium'>Grand Total: ${grandTotal.toFixed(2)}</p>
 
-            <button onClick={()=> deleteAllItems()} className='text-white bg-red-500 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-red-800'>Clear Cart</button>
+            <div className='flex flex-col justify-center items-center'>
+                
+            <div onClick={()=> deleteAllItems()} className='text-white bg-red-500 md:w-[300px] md:h-[45px] flex justify-center items-center gap-3 py-3 mt-8 w-full font-medium rounded-xl hover:bg-red-800'>
+            <button >Clear Cart</button>
+            <TrashIcon className='w-5 h-5'></TrashIcon>
+            </div>
 
             {
                 children
             }
+            </div>
 
         </div>
 
