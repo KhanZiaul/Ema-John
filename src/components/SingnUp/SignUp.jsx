@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authprovider/Authprovider';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
 
@@ -11,22 +12,27 @@ const SignUp = () => {
         const Name = e.target.name.value;
         const Email = e.target.email.value;
         const Password = e.target.password.value;
-
-        console.log(Name, Email, Password)
-
         createUser(Email, Password)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
-                // ...
+                console.log(user)
+                userNameUpdate(userCredential.user,Name)
+
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
             });
 
-            e.target.reset()
+        e.target.reset()
+    }
+
+    function userNameUpdate(user,name) {
+        updateProfile(user, {
+            displayName:name
+        }).then(() => {
+
+        }).catch((error) => {
+        });
     }
 
     return (
