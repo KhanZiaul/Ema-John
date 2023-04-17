@@ -29,7 +29,7 @@ const SignUp = () => {
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
                         </div>
                         <div>
-                            <small>Already have an account? <Link to='/login'>Login</Link></small>
+                            <small>Already have an account? <Link to='/login' className='text-blue-700 underline'>Login</Link></small>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>

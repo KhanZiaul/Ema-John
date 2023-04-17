@@ -22,8 +22,11 @@ const Login = () => {
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" />
                             <label className="label">
-                                <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                                <Link href="#" className="label-text-alt link link-hover underline text-blue-700">Forgot password?</Link>
                             </label>
+                        </div>
+                        <div>
+                            <small>New to Ema-john? <Link to='/register' className='text-blue-700 underline'>Create New Account</Link></small>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
