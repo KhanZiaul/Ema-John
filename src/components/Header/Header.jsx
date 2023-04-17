@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/images/favicon.ico'
 import './Header.css'
 import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Authprovider/Authprovider';
 const Header = () => {
+    const { loginUser } = useContext(AuthContext)
+    console.log(loginUser)
     return (
         <nav className='flex justify-between items-center p-5 bg-slate-500'>
             <Link to='/'>
