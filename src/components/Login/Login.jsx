@@ -10,13 +10,9 @@ const Login = () => {
         e.preventDefault()
         const Email = e.target.email.value;
         const Password = e.target.password.value;
-
-        console.log(Email, Password)
-
         signinUser(Email, Password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
             })
             .catch((error) => {
                 const errorMessage = error.message;

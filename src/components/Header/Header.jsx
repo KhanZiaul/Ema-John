@@ -47,24 +47,30 @@ const Header = () => {
                         <button onClick={logOutHandler} className='bg-slate-700 px-3 py-1 rounded-md'>Sign Out</button>
                     </div>
                 }
+                {
+                    (!loginUser) &&
 
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) => isActive ? "active" : ""
-                    }
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) => isActive ? "active" : ""
+                        }
 
-                >
-                    Login
-                </NavLink>
+                    >
+                        Login
+                    </NavLink>
+                }
+                {
+                    (!loginUser) &&
 
-                <NavLink
-                    to="/register"
-                    className={({ isActive }) => isActive ? "active" : ""
-                    }
+                    <NavLink
+                        to="/register"
+                        className={({ isActive }) => isActive ? "active" : ""
+                        }
 
-                >
-                    Register
-                </NavLink>
+                    >
+                        Register
+                    </NavLink>
+                }
 
             </div>
         </nav >

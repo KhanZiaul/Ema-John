@@ -15,10 +15,8 @@ const SignUp = () => {
         createUser(Email, Password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user)
                 userNameUpdate(userCredential.user,Name)
                 emailVarification(userCredential.user)
-
             })
             .catch((error) => {
                 const errorMessage = error.message;
