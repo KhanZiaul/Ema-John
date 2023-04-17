@@ -41,6 +41,15 @@ const Header = () => {
                     Login
                 </NavLink>
 
+                <NavLink
+                    to="/register"
+                    className={({ isActive }) => isActive ? "active" : ""
+                    }
+
+                >
+                    Register
+                </NavLink>
+
             </div>
         </nav>
     );
