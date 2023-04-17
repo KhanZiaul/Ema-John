@@ -5,8 +5,13 @@ import { NavLink } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authprovider/Authprovider';
 const Header = () => {
-    const { loginUser } = useContext(AuthContext)
+    const { loginUser, logOut } = useContext(AuthContext)
     console.log(loginUser)
+
+    function logOutHandler() {
+        logOut();
+    }
+
     return (
         <nav className='flex justify-between items-center p-5 bg-slate-500'>
             <Link to='/'>
@@ -35,11 +40,19 @@ const Header = () => {
                 >
                     Inventory
                 </NavLink>
+
+                {
+                    loginUser && < div className='flex gap-5'>
+                        <p>{loginUser.email}</p>
+                        <button onClick={logOutHandler} className='bg-slate-700 px-3 py-1 rounded-md'>Sign Out</button>
+                    </div>
+                }
+
                 <NavLink
                     to="/login"
                     className={({ isActive }) => isActive ? "active" : ""
                     }
-                    
+
                 >
                     Login
                 </NavLink>
@@ -54,7 +67,7 @@ const Header = () => {
                 </NavLink>
 
             </div>
-        </nav>
+        </nav >
     );
 };
 
