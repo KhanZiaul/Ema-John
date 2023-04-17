@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authprovider/Authprovider';
-import { updateProfile } from 'firebase/auth';
+import { sendEmailVerification, updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
 
@@ -17,6 +17,7 @@ const SignUp = () => {
                 const user = userCredential.user;
                 console.log(user)
                 userNameUpdate(userCredential.user,Name)
+                emailVarification(userCredential.user)
 
             })
             .catch((error) => {
@@ -32,6 +33,13 @@ const SignUp = () => {
         }).then(() => {
 
         }).catch((error) => {
+        });
+    }
+
+    function emailVarification(user) {
+        sendEmailVerification(user)
+        .then(() => {
+            alert('Email Verification Send')
         });
     }
 
