@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Authprovider/Authprovider';
 
 const Login = () => {
+
+    const { signinUser } = useContext(AuthContext)
+
+    function formSubmit(e) {
+        e.preventDefault()
+        const Email = e.target.email.value;
+        const Password = e.target.password.value;
+
+        console.log(Email, Password)
+
+        signinUser(Email, Password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+            });
+        e.target.reset()
+    }
+
     return (
         <div className="hero bg-base-200">
             <div className="hero-content flex-col">
                 <div className="text-center ">
                     <h1 className="text-4xl font-semibold">Login</h1>
                 </div>
-                <form className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <form onSubmit={formSubmit} className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <div className="form-control">
                             <label className="label">
