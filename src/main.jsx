@@ -14,6 +14,7 @@ import Loader from './components/Loader/Loader';
 import CheckOut from './components/CheckOut/CheckOut';
 import SignUp from './components/SingnUp/SignUp';
 import Authprovider from './components/Authprovider/Authprovider';
+import PrivateProvider from './components/PrivateProvider/PrivateProvider';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'checkout',
-        element: <CheckOut></CheckOut>
+        element: <PrivateProvider> <CheckOut></CheckOut> </PrivateProvider>
       }
     ]
   }
