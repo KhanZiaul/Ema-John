@@ -10,6 +10,8 @@ const Authprovider = ({ children }) => {
 
     const [loginUser, setLoginUser] = useState('');
 
+    const [progress , setProgress] = useState(true)
+
     function createUser(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -26,12 +28,14 @@ const Authprovider = ({ children }) => {
         loginUser,
         createUser,
         signinUser,
-        logOut
+        logOut,
+        progress
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setLoginUser(user)
+            setProgress(false)
         });
         return ()=>{
             unsubscribe();
