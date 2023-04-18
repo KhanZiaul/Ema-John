@@ -12,6 +12,15 @@ const SignUp = () => {
         const Name = e.target.name.value;
         const Email = e.target.email.value;
         const Password = e.target.password.value;
+        const ConfirmPass = e.target.confirmPassword.value;
+
+        if(Password !== ConfirmPass){
+
+            alert('Your Password is not Same')
+
+            return ;
+        }
+
         createUser(Email, Password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -66,6 +75,12 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Confirm Password</span>
+                            </label>
+                            <input type="password" name='confirmPassword' placeholder="password" className="input input-bordered" required/>
                         </div>
                         <div>
                             <small>Already have an account? <Link to='/login' className='text-blue-700 underline'>Login</Link></small>
