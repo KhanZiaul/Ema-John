@@ -13,10 +13,12 @@ const Authprovider = ({ children }) => {
     const [progress , setProgress] = useState(true)
 
     function createUser(email, password) {
+        setProgress(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     function signinUser(email, password) {
+        setProgress(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
