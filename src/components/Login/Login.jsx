@@ -7,8 +7,7 @@ const Login = () => {
     const { signinUser } = useContext(AuthContext)
 
     const location = useLocation()
-    console.log(location)
-    
+    const from = location.state?.from?.pathname || '/' ; 
     const navigate = useNavigate()
 
     function formSubmit(e) {
@@ -18,7 +17,7 @@ const Login = () => {
         signinUser(Email, Password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate('/')
+                navigate(from , { replace: true })
             })
             .catch((error) => {
                 const errorMessage = error.message;

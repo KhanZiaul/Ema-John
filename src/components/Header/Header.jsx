@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authprovider/Authprovider';
 const Header = () => {
     const { loginUser, logOut } = useContext(AuthContext)
-    console.log(loginUser)
 
     function logOutHandler() {
         logOut();
