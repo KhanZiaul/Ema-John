@@ -28,6 +28,10 @@ const Login = () => {
         e.target.reset()
     }
 
+    function hideOrShowHandler(){
+
+        setShowOrHide(!showOrHide)
+    }
     return (
         <div className="hero bg-base-200">
             <div className="hero-content flex-col">
@@ -47,13 +51,13 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
+                                <input type={showOrHide ? 'password' : 'text'} name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <Link href="#" className="label-text-alt link link-hover underline text-blue-700">Forgot password?</Link>
                                 </label>
                             </div>
                             <div className='absolute top-12 right-4'>
-                                <EyeIcon className="h-6 w-6 text-blue-500" />
+                                <EyeIcon onClick={hideOrShowHandler} className="h-6 w-6 text-blue-500 cursor-pointer" />
                             </div>
                         </div>
                         <div>
