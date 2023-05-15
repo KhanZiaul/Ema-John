@@ -8,13 +8,16 @@ import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 
 const Shop = () => {
 
-  const {totalProducts} = useLoaderData()
-  console.log(totalProducts)
+  // Pegination
+  const { totalProducts } = useLoaderData()
+  // console.log(totalPages)
 
   const [datas, setdatas] = useState([]);
   const [carts, setCarts] = useState([]);
 
-  //
+  // Pegination
+
+
 
 
   useEffect(() => {
@@ -23,10 +26,24 @@ const Shop = () => {
       .then(data => setdatas(data))
   }, [])
 
-  //
+  // Pegination
 
+  const itemsperPage = 10;
 
+  const totalPages = Math.ceil(totalProducts / itemsperPage)
+  // console.log(totalPages)
 
+  // first option----
+  // const pages = []
+  // for(let i= 0 ; i < totalPages ; i++){
+  //   pages.push(i)
+  // }
+  // console.log(pages)
+
+  // second option ----
+
+  const pages = [...Array(totalPages).keys()]
+  console.log(pages)
 
 
   useEffect(() => {
@@ -92,7 +109,17 @@ const Shop = () => {
         </div>
       </div>
 
+      {/* Pegination */}
 
+      <div>
+        <div className='my-20 text-center'>
+          {
+            pages?.map(number => {
+             return <button className='bg-slate-600 p-3 rounded-md mx-3 text-white'>{number}</button>
+            })
+          }
+        </div>
+      </div>
     </>
   );
 };
