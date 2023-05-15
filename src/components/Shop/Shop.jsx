@@ -11,7 +11,7 @@ const Shop = () => {
   const [carts, setCarts] = useState([]);
 
   useEffect(() => {
-    fetch('products.json')
+    fetch('http://localhost:8000/products')
       .then(res => res.json())
       .then(data => setdatas(data))
   }, [])
@@ -20,7 +20,7 @@ const Shop = () => {
     let savedCarts = [];
     let getCarts = getShoppingCart();
     for (let id in getCarts) {
-      let matchProduct = datas.find((product) => product.id === id);
+      let matchProduct = datas.find((product) => product._id === id);
       if (matchProduct) {
         let newQuantity = getCarts[id];
         matchProduct.quantity = newQuantity;
@@ -34,18 +34,18 @@ const Shop = () => {
   function cartProduct(product) {
     // const newProducts = [...carts,product] ;
     let newProducts = [];
-    const exists = carts.find(pd => pd.id === product.id);
+    const exists = carts.find(pd => pd._id === product._id);
     if (!exists) {
       product.quantity = 1;
       newProducts = [...carts, product]
     }
     else {
       exists.quantity = exists.quantity + 1;
-      const remaining = carts.filter(pd => exists.id !== pd.id);
+      const remaining = carts.filter(pd => exists._id !== pd._id);
       newProducts = [...remaining, exists]
     }
     setCarts(newProducts);
-    addToDb(product.id)
+    addToDb(product._id)
   }
 
   function deleteAllItems() {
@@ -58,7 +58,7 @@ const Shop = () => {
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
         {
           datas.map((data) => <Cards
-            key={data.id}
+            key={data._id}
             data={data}
             cartProduct={cartProduct}
           >

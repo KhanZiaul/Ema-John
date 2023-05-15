@@ -2,12 +2,12 @@ import { getShoppingCart } from "../utilities/fakedb"
 
 const Loader =  async() =>{
 
-    const res = await fetch('products.json')
+    const res = await fetch('http://localhost:8000/products')
     const datas = await res.json()
     const getDataFromDatabase = getShoppingCart()
     let saveCart = [];
     for(let id in getDataFromDatabase){
-        let matchProduct = datas.find(data => data.id === id)
+        let matchProduct = datas.find(data => data._id === id)
         if(matchProduct){
             let quantity = getDataFromDatabase[id]
             matchProduct.quantity = quantity

@@ -17,7 +17,7 @@ const ReviewItems = ({product,deleteItem}) => {
                         </div>
                     </div>
 
-                    <div onClick={() => deleteItem(product.id)} className='md:bg-red-200 p-3 rounded-full cursor-pointer hover:bg-red-300 flex justify-center items-center'>
+                    <div onClick={() => deleteItem(product._id)} className='md:bg-red-200 p-3 rounded-full cursor-pointer hover:bg-red-300 flex justify-center items-center'>
                         <TrashIcon className="h-6 w-6 text-red-500 " />
                     </div>
                 </div>

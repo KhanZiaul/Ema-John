@@ -10,7 +10,7 @@ const Orders = () => {
     const [selectedProducts, setSelectedProducts] = useState(products)
 
     function deleteItem(id) {
-        const newProduct = selectedProducts.filter(product => product.id !== id)
+        const newProduct = selectedProducts.filter(product => product._id !== id)
         setSelectedProducts(newProduct)
         removeFromDb(id)
     }
@@ -24,7 +24,7 @@ const Orders = () => {
             <div>
                 {
                     selectedProducts.map(product => <ReviewItems
-                        key={product.id}
+                        key={product._id}
                         product={product}
                         deleteItem={deleteItem}
                     >
