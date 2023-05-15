@@ -17,7 +17,8 @@ const Shop = () => {
 
   // Pegination
 
-
+  const [currentpage,setCurrentPage] = useState(0)
+  const [itemsperPage,setItemsperPage] = useState(10)
 
 
   useEffect(() => {
@@ -27,8 +28,6 @@ const Shop = () => {
   }, [])
 
   // Pegination
-
-  const itemsperPage = 10;
 
   const totalPages = Math.ceil(totalProducts / itemsperPage)
   // console.log(totalPages)
@@ -44,6 +43,13 @@ const Shop = () => {
 
   const pages = [...Array(totalPages).keys()]
   console.log(pages)
+
+  const options = [5,10,15,20]
+
+  function slectedValue(event){
+    setItemsperPage(event.target.value)
+    setCurrentPage(0)
+  }
 
 
   useEffect(() => {
@@ -113,11 +119,19 @@ const Shop = () => {
 
       <div>
         <div className='my-20 text-center'>
+          <p className='my-4 text-xl'> Current Page - {currentpage}</p>
           {
             pages?.map(number => {
-             return <button className='bg-slate-600 p-3 rounded-md mx-3 text-white'>{number}</button>
+             return <button key={number} onClick={() => setCurrentPage(number)}  className='bg-slate-600 p-3 rounded-md mx-3 text-white'>{number}</button>
             })
           }
+          <select value={itemsperPage} className='bg-slate-600 py-3 px-2 rounded-md mx-3 text-white' onChange={slectedValue}>
+            {
+              options.map((num,index) => {
+                return <option key={index} value={num}>{num}</option>
+              })
+            }
+          </select>
         </div>
       </div>
     </>
