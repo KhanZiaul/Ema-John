@@ -3,18 +3,31 @@ import Cards from '../Cards/Cards';
 import './Shop.css'
 import Cart from '../Cart/Cart';
 import { addToDb, deleteShoppingCart, getShoppingCart } from '../utilities/fakedb';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { ArrowLongRightIcon } from '@heroicons/react/24/solid'
 
 const Shop = () => {
+
+  const {totalProducts} = useLoaderData()
+  console.log(totalProducts)
+
   const [datas, setdatas] = useState([]);
   const [carts, setCarts] = useState([]);
+
+  //
+
 
   useEffect(() => {
     fetch('http://localhost:8000/products')
       .then(res => res.json())
       .then(data => setdatas(data))
   }, [])
+
+  //
+
+
+
+
 
   useEffect(() => {
     let savedCarts = [];
@@ -54,29 +67,33 @@ const Shop = () => {
   }
 
   return (
-    <div className='showData m-5 flex flex-col-reverse md:flex-row'>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-        {
-          datas.map((data) => <Cards
-            key={data._id}
-            data={data}
-            cartProduct={cartProduct}
+    <>
+      <div className='showData m-5 flex flex-col-reverse md:flex-row'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+          {
+            datas.map((data) => <Cards
+              key={data._id}
+              data={data}
+              cartProduct={cartProduct}
+            >
+            </Cards>)
+          }
+        </div>
+        <div>
+          <Cart
+            carts={carts}
+            deleteAllItems={deleteAllItems}
           >
-          </Cards>)
-        }
+            <Link to='/orders' className='text-white flex justify-center items-center gap-4 bg-green-700 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-green-900'>
+              <button >Review Order</button>
+              <ArrowLongRightIcon className='w-8 h-8'></ArrowLongRightIcon>
+            </Link>
+          </Cart>
+        </div>
       </div>
-      <div>
-        <Cart
-          carts={carts}
-          deleteAllItems={deleteAllItems}
-        >
-          <Link to='/orders' className='text-white flex justify-center items-center gap-4 bg-green-700 md:w-[300px] md:h-[45px] py-3 mt-8 w-full font-medium rounded-xl hover:bg-green-900'>
-            <button >Review Order</button>
-            <ArrowLongRightIcon className='w-8 h-8'></ArrowLongRightIcon>
-          </Link>
-        </Cart>
-      </div>
-    </div>
+
+
+    </>
   );
 };
 
