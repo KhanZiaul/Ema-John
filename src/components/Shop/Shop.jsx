@@ -22,10 +22,10 @@ const Shop = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:8000/products')
+    fetch(`http://localhost:8000/products?page=${currentpage}&limit=${itemsperPage}`)
       .then(res => res.json())
       .then(data => setdatas(data))
-  }, [])
+  }, [currentpage,itemsperPage])
 
   // Pegination
 
@@ -122,7 +122,7 @@ const Shop = () => {
           <p className='my-4 text-xl'> Current Page - {currentpage}</p>
           {
             pages?.map(number => {
-             return <button key={number} onClick={() => setCurrentPage(number)}  className='bg-slate-600 p-3 rounded-md mx-3 text-white'>{number}</button>
+             return <button key={number} onClick={() => setCurrentPage(number)}  className={`bg-slate-600 p-3 rounded-md mx-3 text-white ${currentpage === number ? 'bg-orange-600' : ''}`}>{number}</button>
             })
           }
           <select value={itemsperPage} className='bg-slate-600 py-3 px-2 rounded-md mx-3 text-white' onChange={slectedValue}>
