@@ -17,15 +17,15 @@ const Shop = () => {
 
   // Pegination
 
-  const [currentpage,setCurrentPage] = useState(0)
-  const [itemsperPage,setItemsperPage] = useState(10)
+  const [currentpage, setCurrentPage] = useState(0)
+  const [itemsperPage, setItemsperPage] = useState(10)
 
 
   useEffect(() => {
     fetch(`http://localhost:8000/products?page=${currentpage}&limit=${itemsperPage}`)
       .then(res => res.json())
       .then(data => setdatas(data))
-  }, [currentpage,itemsperPage])
+  }, [currentpage, itemsperPage])
 
   // Pegination
 
@@ -44,9 +44,9 @@ const Shop = () => {
   const pages = [...Array(totalPages).keys()]
   // console.log(pages)
 
-  const options = [5,10,15,20]
+  const options = [5, 10, 15, 20]
 
-  function slectedValue(event){
+  function slectedValue(event) {
     setItemsperPage(event.target.value)
     setCurrentPage(0)
   }
@@ -55,18 +55,32 @@ const Shop = () => {
 
 
   useEffect(() => {
+    
     let savedCarts = [];
+
     let getCarts = getShoppingCart();
-    for (let id in getCarts) {
-      let matchProduct = datas.find((product) => product._id === id);
-      if (matchProduct) {
-        let newQuantity = getCarts[id];
-        matchProduct.quantity = newQuantity;
-        savedCarts.push(matchProduct);
-      }
-    }
-    setCarts(savedCarts);
-  }, [datas])
+    const ids = Object.keys(getCarts)
+
+    fetch('http://localhost:8000/cartProducts', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(ids)
+    }).then(res => res.json())
+      .then(cartProducts => {
+        for (let id in getCarts) {
+          let matchProduct = cartProducts.find((product) => product._id === id);
+          if (matchProduct) {
+            let newQuantity = getCarts[id];
+            matchProduct.quantity = newQuantity;
+            savedCarts.push(matchProduct);
+          }
+        }
+        setCarts(savedCarts);
+      })
+
+  }, [])
 
 
   function cartProduct(product) {
@@ -124,12 +138,12 @@ const Shop = () => {
         <div className='my-20 text-center'>
           {
             pages?.map(number => {
-             return <button key={number} onClick={() => setCurrentPage(number)}  className={`bg-slate-600 p-3 rounded-md mx-3 text-white ${currentpage===number ? 'bg-blue-600' : ''}`}>{number}</button>
+              return <button key={number} onClick={() => setCurrentPage(number)} className={`bg-slate-600 p-3 rounded-md mx-3 text-white ${currentpage === number ? 'bg-blue-600' : ''}`}>{number}</button>
             })
           }
           <select value={itemsperPage} className='bg-slate-600 py-3 px-2 rounded-md mx-3 text-white' onChange={slectedValue}>
             {
-              options.map((num,index) => {
+              options.map((num, index) => {
                 return <option key={index} value={num}>{num}</option>
               })
             }
