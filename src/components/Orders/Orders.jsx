@@ -5,8 +5,11 @@ import ReviewItems from '../ReviewItems/ReviewItems';
 import { deleteShoppingCart, removeFromDb } from '../utilities/fakedb';
 import { CreditCardIcon } from '@heroicons/react/24/solid'
 
+
 const Orders = () => {
+    
     const products = useLoaderData()
+
     const [selectedProducts, setSelectedProducts] = useState(products)
 
     function deleteItem(id) {

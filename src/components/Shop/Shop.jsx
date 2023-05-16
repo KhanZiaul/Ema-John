@@ -42,7 +42,7 @@ const Shop = () => {
   // second option ----
 
   const pages = [...Array(totalPages).keys()]
-  console.log(pages)
+  // console.log(pages)
 
   const options = [5,10,15,20]
 
@@ -50,6 +50,8 @@ const Shop = () => {
     setItemsperPage(event.target.value)
     setCurrentPage(0)
   }
+
+
 
 
   useEffect(() => {
@@ -83,6 +85,7 @@ const Shop = () => {
     setCarts(newProducts);
     addToDb(product._id)
   }
+
 
   function deleteAllItems() {
     setCarts([])
@@ -119,10 +122,9 @@ const Shop = () => {
 
       <div>
         <div className='my-20 text-center'>
-          <p className='my-4 text-xl'> Current Page - {currentpage}</p>
           {
             pages?.map(number => {
-             return <button key={number} onClick={() => setCurrentPage(number)}  className={`bg-slate-600 p-3 rounded-md mx-3 text-white ${currentpage === number ? 'bg-orange-600' : ''}`}>{number}</button>
+             return <button key={number} onClick={() => setCurrentPage(number)}  className={`bg-slate-600 p-3 rounded-md mx-3 text-white ${currentpage===number ? 'bg-blue-600' : ''}`}>{number}</button>
             })
           }
           <select value={itemsperPage} className='bg-slate-600 py-3 px-2 rounded-md mx-3 text-white' onChange={slectedValue}>
