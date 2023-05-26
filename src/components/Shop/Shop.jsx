@@ -22,7 +22,7 @@ const Shop = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:8000/products?page=${currentpage}&limit=${itemsperPage}`)
+    fetch(`https://ema-jhon-server-site.vercel.app/products?page=${currentpage}&limit=${itemsperPage}`)
       .then(res => res.json())
       .then(data => setdatas(data))
   }, [currentpage, itemsperPage])
@@ -52,8 +52,6 @@ const Shop = () => {
   }
 
 
-
-
   useEffect(() => {
     
     let savedCarts = [];
@@ -61,7 +59,7 @@ const Shop = () => {
     let getCarts = getShoppingCart();
     const ids = Object.keys(getCarts)
 
-    fetch('http://localhost:8000/cartProducts', {
+    fetch('https://ema-jhon-server-site.vercel.app/cartProducts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
